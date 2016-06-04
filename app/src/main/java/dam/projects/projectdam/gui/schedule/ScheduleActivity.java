@@ -2,9 +2,6 @@ package dam.projects.projectdam.gui.schedule;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,25 +15,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
-import android.widget.Toast;
-
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.client.util.DateTime;
 
 import org.joda.time.LocalDate;
 
 import java.net.HttpURLConnection;
-import java.net.NetworkInterface;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import dam.projects.projectdam.R;
 import dam.projects.projectdam.exception.InvalidStudentException;
-import dam.projects.projectdam.gui.IActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
 import dam.projects.projectdam.helpers.HelpersDate;
@@ -46,7 +35,6 @@ import dam.projects.projectdam.json.siupt.schedule.JScheduleResultUPT;
 import dam.projects.projectdam.json.siupt.schedule.JScheduleUPT;
 import dam.projects.projectdam.network.HttpNRequest;
 import dam.projects.projectdam.network.RequestDetail;
-import dam.projects.projectdam.network.SIUPTinfo;
 import dam.projects.projectdam.objects.AcademicYear;
 import dam.projects.projectdam.objects.ScheduleDay;
 import dam.projects.projectdam.objects.Student;

@@ -3,10 +3,8 @@ package dam.projects.projectdam.global;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 
-import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
 import java.net.HttpURLConnection;
@@ -18,7 +16,6 @@ import java.util.TimerTask;
 import dam.projects.projectdam.R;
 import dam.projects.projectdam.exception.InvalidStudentException;
 import dam.projects.projectdam.gui.MenuActivity;
-import dam.projects.projectdam.gui.marks.MarksActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
 import dam.projects.projectdam.json.JSONClass;
@@ -26,7 +23,6 @@ import dam.projects.projectdam.json.siupt.JResultUPT;
 import dam.projects.projectdam.json.siupt.grades.JGradeResultUPT;
 import dam.projects.projectdam.network.HttpNRequest;
 import dam.projects.projectdam.network.RequestDetail;
-import dam.projects.projectdam.network.SIUPTinfo;
 import dam.projects.projectdam.notifications.Notification;
 import dam.projects.projectdam.objects.AcademicYear;
 import dam.projects.projectdam.objects.Grade;

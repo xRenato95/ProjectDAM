@@ -3,7 +3,6 @@ package dam.projects.projectdam.gui.events;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.Intent;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,8 +10,6 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +22,6 @@ import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import org.joda.time.DateTime;
 
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
@@ -37,7 +29,6 @@ import java.util.ArrayList;
 
 import dam.projects.projectdam.R;
 import dam.projects.projectdam.exception.InvalidStudentException;
-import dam.projects.projectdam.gui.IActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
 import dam.projects.projectdam.json.server.JServerAbstract;
@@ -54,14 +45,11 @@ import dam.projects.projectdam.json.server.event.member.invite.JResultMemberInv;
 import dam.projects.projectdam.json.siupt.JResultUPT;
 import dam.projects.projectdam.network.HttpNRequest;
 import dam.projects.projectdam.network.RequestDetail;
-import dam.projects.projectdam.network.SIUPTinfo;
-import dam.projects.projectdam.objects.EventFinal;
 import dam.projects.projectdam.objects.EventType;
 import dam.projects.projectdam.objects.Member;
 import dam.projects.projectdam.objects.MemberInvite;
 import dam.projects.projectdam.objects.Student;
 import dam.projects.projectdam.objects.VisibilityType;
-import dam.projects.projectdam.sqlite.DataBase;
 
 public class EventsActivity extends Fragment {
 
