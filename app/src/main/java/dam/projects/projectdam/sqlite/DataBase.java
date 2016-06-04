@@ -397,7 +397,7 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
             academicYear = new AcademicYear(ano-1,ano);
             semester = 2;
         }
-        Grade[] storedGrades = getGrades(academicYear,semester);
+        Grade[] storedGrades = getGradesNotification();
         //TODO TESTE NOTAS NICE
         /*Grade[] temp = new Grade[storedGrades.length+1];
         int j = 0;
@@ -437,6 +437,8 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
                 }
             }
         }
+        deleteGradesNotification();
+        insertGradesNotification(remoteGrades);
         return newGrades.toArray(new Grade[newGrades.size()]);
     }
 
