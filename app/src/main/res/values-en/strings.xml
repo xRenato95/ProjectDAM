@@ -185,7 +185,7 @@
     <string name="schedule_yea_2">2015/2016</string>
     <string name="text_impossible_events">Close</string>
     <string name="text_impossible_schedule">Close</string>
-    <string name="text_impossible_marks">Was not possible to get the requested grades.</string>
+    <string name="text_impossible_marks">There are no grades to show!</string>
     <string name="text_wait_dialog">Please wait...</string>
     <string name="title_impossible_events">Was not possible to get the requested events.</string>
     <string name="title_impossible_schedule">Was not possible to get the requested schedule.</string>

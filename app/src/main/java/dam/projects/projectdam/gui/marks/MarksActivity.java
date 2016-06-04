@@ -333,6 +333,8 @@ public class MarksActivity extends Fragment {
                 }
 
                 jsonContent = Helpers.getConnectionContent(conn.getInputStream())[0];
+                //2016-06-04
+                if (jsonContent == null) return Code.GET_GRADE_NULL;
                 json = Helpers.jsonToObject(jsonContent, JGradeResultUPT.class);
 
                 return operation(details, json, db);
@@ -393,7 +395,9 @@ public class MarksActivity extends Fragment {
                     break;
                 case GET_GRADE_NULL:
                     String textImpossibleMarks = getActivity().getString(R.string.text_impossible_marks);
-                    Snackbar.make(null,textImpossibleMarks,Snackbar.LENGTH_LONG).show();
+                    if (getActivity().getCurrentFocus()!=null) {
+                        Snackbar.make(getActivity().getCurrentFocus(), textImpossibleMarks, Snackbar.LENGTH_LONG).show();
+                    }
                     break;
             }
 

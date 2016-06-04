@@ -34,6 +34,7 @@ import dam.projects.projectdam.objects.VisibilityType;
 import dam.projects.projectdam.sqlite.tables.TEvent;
 import dam.projects.projectdam.sqlite.tables.TFriends;
 import dam.projects.projectdam.sqlite.tables.TGrade;
+import dam.projects.projectdam.sqlite.tables.TGradeNotification;
 import dam.projects.projectdam.sqlite.tables.TMember;
 import dam.projects.projectdam.sqlite.tables.TMemberInv;
 import dam.projects.projectdam.sqlite.tables.TSchedule;
@@ -45,7 +46,7 @@ import dam.projects.projectdam.sqlite.tables.TStudent;
  */
 public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
     private static final String DB_NAME = "app_upt_db.s3db";
-    private static final int DB_VERSION = 20;
+    private static final int DB_VERSION = 21;
 
     /*
      * Tables
@@ -57,6 +58,7 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
     private TEvent tEvent;
     private TMember tMember;
     private TMemberInv tMemberInv;
+    private TGradeNotification tGradeNotification;
 
     public DataBase(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -67,6 +69,7 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
         tEvent = new TEvent();
         tMember = new TMember();
         tMemberInv = new TMemberInv();
+        tGradeNotification = new TGradeNotification();
     }
 
     @Override
@@ -78,16 +81,18 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
         db.execSQL(tEvent.getCreateString());
         db.execSQL(tMember.getCreateString());
         db.execSQL(tMemberInv.getCreateString());
+        db.execSQL(tGradeNotification.getCreateString());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //db.execSQL("DROP TABLE FRIENDS");
-        //db.execSQL(tFriends.getCreateString());
-        /*db.execSQL(tGrade.getCreateString());*/
-        //db.execSQL(tEvent.getCreateString());
-        //db.execSQL(tMember.getCreateString());
-        //db.execSQL(tMemberInv.getCreateString());
+        db.execSQL(tFriends.getCreateString());
+        db.execSQL(tGrade.getCreateString());
+        db.execSQL(tEvent.getCreateString());
+        db.execSQL(tMember.getCreateString());
+        db.execSQL(tMemberInv.getCreateString());
+        db.execSQL(tGradeNotification.getCreateString());
     }
 
     //region Student Procedures
@@ -349,12 +354,12 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
                             cursor.getString(10),
                             cursor.getString(11),
                             cursor.getString(12),
-                            cursor.getInt(13),
-                            cursor.getInt(14),
-                            cursor.getInt(15),
-                            cursor.getInt(16),
-                            cursor.getInt(17),
-                            cursor.getInt(18),
+                            Integer.parseInt(cursor.getString(13)),
+                            Integer.parseInt(cursor.getString(14)),
+                            Integer.parseInt(cursor.getString(15)),
+                            cursor.getString(16)==null?null:Integer.parseInt(cursor.getString(16)),
+                            cursor.getString(17)==null?null:Integer.parseInt(cursor.getString(17)),
+                            cursor.getString(18)==null?null:Integer.parseInt(cursor.getString(18)),
                             AcademicYear.toObject(cursor.getString(19))
                     ));
                 }
@@ -698,6 +703,90 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
             cursor.close();
         }
         return list.toArray(new MemberInvite[list.size()]);
+    }
+    //endregion
+
+    //region Grade Notification Procedure
+    /**
+     * If you want this to be public, this method inserts a new grade without deleting the existing
+     * grades on the table.
+     */
+    private void insertGradeNotification(Grade grade) {
+        // insert
+        ContentValues values = new ContentValues();
+        values.put(tGradeNotification.getColumns()[1], grade.getDateBegin() == null ? null : grade.getDateBegin().toString());
+        values.put(tGradeNotification.getColumns()[2], grade.getCourseName());
+        values.put(tGradeNotification.getColumns()[3], grade.getPvepName());
+        values.put(tGradeNotification.getColumns()[4], grade.getAviName());
+        values.put(tGradeNotification.getColumns()[5], grade.getEvaluationName());
+        values.put(tGradeNotification.getColumns()[6], grade.getAverageGrade());
+        values.put(tGradeNotification.getColumns()[7], grade.getPvnObservation());
+        values.put(tGradeNotification.getColumns()[8], grade.getPcObservation());
+        values.put(tGradeNotification.getColumns()[9], grade.getObservation());
+        values.put(tGradeNotification.getColumns()[10], grade.getGrade());
+        values.put(tGradeNotification.getColumns()[11], grade.getStudentStatute());
+        values.put(tGradeNotification.getColumns()[12], grade.getAssiduity());
+        values.put(tGradeNotification.getColumns()[13], grade.getEstAssiduidade());
+        values.put(tGradeNotification.getColumns()[14], grade.getMinimumGrade());
+        values.put(tGradeNotification.getColumns()[15], grade.getGradeFinalWeight());
+        values.put(tGradeNotification.getColumns()[16], grade.getEra());
+        values.put(tGradeNotification.getColumns()[17], grade.getState());
+        values.put(tGradeNotification.getColumns()[18], grade.getSemester());
+        values.put(tGradeNotification.getColumns()[19], grade.getAcademicYear().toString());
+        this.getReadableDatabase().insert(tGradeNotification.getTableName(), null, values);
+    }
+
+    /**
+     * Inserts an array of grades, deleting all the existing grades on the table
+     */
+    public void insertGradesNotification(Grade[] grades) {
+        deleteGradesNotification();
+        for (Grade each : grades) {
+            insertGradeNotification(each);
+        }
+    }
+
+    /**
+     * Deletes all the existing grades on the table
+     */
+    public void deleteGradesNotification() {
+        this.getReadableDatabase().execSQL("DELETE FROM "+tGradeNotification.getTableName());
+    }
+
+    public Grade[] getGradesNotification() {
+        ArrayList<Grade> list = new ArrayList<>();
+        Cursor cursor = this.getReadableDatabase().rawQuery("" +
+                "SELECT * FROM "+tGradeNotification.getTableName(),null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    list.add(new Grade(
+                            cursor.getInt(0),
+                            cursor.getString(1) == null ? null : new DateTime(cursor.getString(1)),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5),
+                            cursor.getString(6),
+                            cursor.getString(7),
+                            cursor.getString(8),
+                            cursor.getString(9),
+                            cursor.getString(10),
+                            cursor.getString(11),
+                            cursor.getString(12),
+                            Integer.parseInt(cursor.getString(13)),
+                            Integer.parseInt(cursor.getString(14)),
+                            Integer.parseInt(cursor.getString(15)),
+                            cursor.getString(16)==null?null:Integer.parseInt(cursor.getString(16)),
+                            cursor.getString(17)==null?null:Integer.parseInt(cursor.getString(17)),
+                            cursor.getString(18)==null?null:Integer.parseInt(cursor.getString(18)),
+                            AcademicYear.toObject(cursor.getString(19))
+                    ));
+                }
+            }
+            cursor.close();
+        }
+        return list.toArray(new Grade[list.size()]);
     }
     //endregion
 }

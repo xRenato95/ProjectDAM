@@ -285,7 +285,7 @@
     <string name="mark_type_avaliation">Tipo Avaliação</string>
     <string name="mark_grade">Nota</string>
     <string name="text_wait_dialog">A carregar...</string>
-    <string name="text_impossible_marks">Não foi possível obter as notas pretendidas!</string>
+    <string name="text_impossible_marks">Não existem notas para mostrar!</string>
     <string name="notification_new_marks">Novas Notas</string>
     <string name="notification_new_mark">Nova Nota</string>
 
