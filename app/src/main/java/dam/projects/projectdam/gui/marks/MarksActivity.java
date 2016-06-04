@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
 import java.net.HttpURLConnection;

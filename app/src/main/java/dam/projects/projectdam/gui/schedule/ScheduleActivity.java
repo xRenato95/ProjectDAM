@@ -2,6 +2,9 @@ package dam.projects.projectdam.gui.schedule;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,17 +18,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.util.DateTime;
 
 import org.joda.time.LocalDate;
 
 import java.net.HttpURLConnection;
+import java.net.NetworkInterface;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import dam.projects.projectdam.R;
 import dam.projects.projectdam.exception.InvalidStudentException;
+import dam.projects.projectdam.gui.IActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
 import dam.projects.projectdam.helpers.HelpersDate;
@@ -95,7 +106,7 @@ public class ScheduleActivity extends Fragment {
 
         semesters.setSelection(semester-1);
 
-        ExpandList = (ExpandableListView) scheduleView.findViewById(R.id.expandableListView);
+        ExpandList = (ExpandableListView) scheduleView.findViewById(R.id.scheduleExpandableListView);
         /*ExpListItems = getSchedule(new AcademicYear(2014,2015),1);
         ExpAdapter = new ExpandListAdapterActivity(scheduleView.getContext(), ExpListItems);
         ExpandList.setAdapter(ExpAdapter);*/
@@ -297,6 +308,7 @@ public class ScheduleActivity extends Fragment {
                     if(dayOfTheWeek==7){
                         dayOfTheWeek=0;
                     }
+                    int firstClassDay = aux[0].getDayOfTheWeek();
 
                     int i = 0;
                     for (String group_name : group_names) {
@@ -348,7 +360,7 @@ public class ScheduleActivity extends Fragment {
                     ExpListItems = list;
                     ExpAdapter = new ExpandListAdapterActivity(scheduleView.getContext(), ExpListItems);
                     ExpandList.setAdapter(ExpAdapter);
-                    if(extender!=-1) {
+                    if(extender!=-1 && firstClassDay==dayOfTheWeek) {
                         ExpandList.expandGroup(extender-1);
                     }
                     break;

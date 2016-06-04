@@ -3,8 +3,10 @@ package dam.projects.projectdam.global;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
 import java.net.HttpURLConnection;
@@ -16,6 +18,7 @@ import java.util.TimerTask;
 import dam.projects.projectdam.R;
 import dam.projects.projectdam.exception.InvalidStudentException;
 import dam.projects.projectdam.gui.MenuActivity;
+import dam.projects.projectdam.gui.marks.MarksActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
 import dam.projects.projectdam.json.JSONClass;

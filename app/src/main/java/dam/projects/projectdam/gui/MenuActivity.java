@@ -20,7 +20,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
@@ -62,8 +64,10 @@ public class MenuActivity extends AppCompatActivity
     private DataBase db;
     private ProgressDialog progressDialog;
 
-    private int mInterval = 30 * 1000; // 30 segundos
+    private int mInterval = 60 * 1000; // Começa com 1 minutos
     private Handler mHandlerMarks,mHandlerInvitations;
+
+    LocalTime temp;
 
     /*
        By Diogo
@@ -102,10 +106,10 @@ public class MenuActivity extends AppCompatActivity
         }
 
         // get database object reference
-        Helpers.setUserGrades(getActivity());
+        Helpers.setUserGrades(getApplicationContext());
         db = new DataBase(getActivity());
         //MarksAsync ma = new MarksAsync(db,getApplicationContext());
-        // ma.setRepeatingAsyncTask();
+       // ma.setRepeatingAsyncTask();
         //UpdateAsync ua = new UpdateAsync(db,getApplicationContext());
         //ua.setRepeatingAsyncTask();
         mHandlerMarks = new Handler();
@@ -121,6 +125,10 @@ public class MenuActivity extends AppCompatActivity
                 new MarksAsync(db,getApplicationContext()).setRepeatingAsyncTask();
                 //this function can change value of mInterval.
             } finally {
+                mInterval *= 1.3;
+                if(mInterval >= 1800*1000){
+                    mInterval = 1800 * 1000;
+                }
                 mHandlerMarks.postDelayed(mStatusCheckerMarks, mInterval);
             }
         }

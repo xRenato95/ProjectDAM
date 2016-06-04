@@ -21,6 +21,7 @@ import dam.projects.projectdam.json.siupt.login.JStudentUPT;
 import dam.projects.projectdam.json.siupt.login.JStudentUPTResult;
 import dam.projects.projectdam.network.HttpNRequest;
 import dam.projects.projectdam.network.HttpNResponse;
+import dam.projects.projectdam.network.IAsyncTask;
 import dam.projects.projectdam.network.RequestDetail;
 import dam.projects.projectdam.network.SIUPTinfo;
 import dam.projects.projectdam.sqlite.DataBase;
