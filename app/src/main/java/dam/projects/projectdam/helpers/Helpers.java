@@ -71,7 +71,7 @@ public class Helpers {
      * @throws SocketTimeoutException if there is not access to the internet
      */
     public static HttpURLConnection createConnection(HttpNRequest request)
-    throws IOException, SocketTimeoutException   {
+            throws IOException, SocketTimeoutException   {
         RequestDetail requestDetails = request.getConnectionDetails();
 
         // turn parameters into one query string
@@ -123,7 +123,7 @@ public class Helpers {
      * @throws IOException
      */
     public static String[] getConnectionContent(InputStream source)
-    throws IOException {
+            throws IOException {
         BufferedReader bReader = null;
         String content;
         try {
@@ -267,7 +267,7 @@ public class Helpers {
             try {
                 result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
                 result.append("=");
-               if (entry.getValue() != null) {
+                if (entry.getValue() != null) {
                     result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
                 } else {
                     result.append("null");

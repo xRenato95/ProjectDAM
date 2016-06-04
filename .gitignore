@@ -6,4 +6,5 @@
 /.idea/libraries
 .DS_Store
 /build
+/app/src/main/java/dam/projects/projectdam/network/SIUPTinfo.java
 /captures

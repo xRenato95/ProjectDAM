@@ -256,8 +256,8 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
 
     public void deleteSchedule(String remoteId) {
         this.getReadableDatabase().delete(tSchedule.getTableName(),
-                                        tSchedule.getColumns()[11]+" = ?",
-                                        new String[]{remoteId});
+                tSchedule.getColumns()[11]+" = ?",
+                new String[]{remoteId});
     }
 
     public ScheduleDay[] getScheduleDays(AcademicYear academicYear, int semester) {
@@ -270,13 +270,13 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     list.add(new ScheduleDay(cursor.getInt(0), cursor.getString(11),
-                                            cursor.getString(1), cursor.getString(2),
-                                            cursor.getString(3), cursor.getString(4),
-                                            cursor.getString(5), HelpersDate.stringToHour(cursor.getString(6)),
-                                            HelpersDate.stringToHour(cursor.getString(7)),
-                                            Integer.parseInt(cursor.getString(8)),
-                                            Integer.parseInt(cursor.getString(9)), AcademicYear.toObject(cursor.getString(10)),
-                                            Integer.parseInt(cursor.getString(12))));
+                            cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4),
+                            cursor.getString(5), HelpersDate.stringToHour(cursor.getString(6)),
+                            HelpersDate.stringToHour(cursor.getString(7)),
+                            Integer.parseInt(cursor.getString(8)),
+                            Integer.parseInt(cursor.getString(9)), AcademicYear.toObject(cursor.getString(10)),
+                            Integer.parseInt(cursor.getString(12))));
                 }
             }
             cursor.close();
@@ -663,18 +663,18 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
                     list.add(new MemberInvite(
                             cursor.getInt(0),
                             new Member (
-                                Integer.parseInt(cursor.getString(1)),
-                                Integer.parseInt(cursor.getString(3)),
-                                Integer.parseInt(cursor.getString(2)),
-                                Integer.parseInt(cursor.getString(10)),
-                                new Student(
-                                        -1,
-                                        cursor.getString(5),
-                                        cursor.getString(6),
-                                        cursor.getString(7),
-                                        cursor.getString(8)
-                                ),
-                                cursor.getString(9).equals("1")),
+                                    Integer.parseInt(cursor.getString(1)),
+                                    Integer.parseInt(cursor.getString(3)),
+                                    Integer.parseInt(cursor.getString(2)),
+                                    Integer.parseInt(cursor.getString(10)),
+                                    new Student(
+                                            -1,
+                                            cursor.getString(5),
+                                            cursor.getString(6),
+                                            cursor.getString(7),
+                                            cursor.getString(8)
+                                    ),
+                                    cursor.getString(9).equals("1")),
                             new EventFinal(
                                     Integer.parseInt(cursor.getString(11)),
                                     Integer.parseInt(cursor.getString(12)),

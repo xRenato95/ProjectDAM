@@ -7,7 +7,11 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,22 +20,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import org.joda.time.LocalDateTime;
+
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import dam.projects.projectdam.R;
+import dam.projects.projectdam.exception.InvalidStudentException;
 import dam.projects.projectdam.global.MarksAsync;
 import dam.projects.projectdam.global.UpdateAsync;
 import dam.projects.projectdam.gui.events.EventsActivity;
+import dam.projects.projectdam.gui.events.MemberAsync;
 import dam.projects.projectdam.gui.friends.FriendsActivity;
+import dam.projects.projectdam.gui.marks.ExpandListAdapterActivity;
 import dam.projects.projectdam.gui.marks.MarksActivity;
 import dam.projects.projectdam.gui.schedule.ScheduleActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
+import dam.projects.projectdam.helpers.HelpersDate;
+import dam.projects.projectdam.json.JSONClass;
 import dam.projects.projectdam.json.server.JServerAbstract;
+import dam.projects.projectdam.json.siupt.JResultUPT;
+import dam.projects.projectdam.json.siupt.grades.JGradeResultUPT;
+import dam.projects.projectdam.json.siupt.grades.JGradeUPT;
 import dam.projects.projectdam.network.HttpNRequest;
 import dam.projects.projectdam.network.HttpNResponse;
 import dam.projects.projectdam.network.RequestDetail;
+import dam.projects.projectdam.network.SIUPTinfo;
+import dam.projects.projectdam.notifications.Notification;
+import dam.projects.projectdam.objects.AcademicYear;
+import dam.projects.projectdam.objects.Course;
+import dam.projects.projectdam.objects.Grade;
 import dam.projects.projectdam.objects.Student;
 import dam.projects.projectdam.sqlite.DataBase;
 
@@ -80,10 +102,10 @@ public class MenuActivity extends AppCompatActivity
         }
 
         // get database object reference
-        Helpers.setUserGrades(getApplicationContext());
+        Helpers.setUserGrades(getActivity());
         db = new DataBase(getActivity());
         //MarksAsync ma = new MarksAsync(db,getApplicationContext());
-       // ma.setRepeatingAsyncTask();
+        // ma.setRepeatingAsyncTask();
         //UpdateAsync ua = new UpdateAsync(db,getApplicationContext());
         //ua.setRepeatingAsyncTask();
         mHandlerMarks = new Handler();

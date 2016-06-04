@@ -35,6 +35,7 @@ import dam.projects.projectdam.json.siupt.grades.JGradeUPT;
 import dam.projects.projectdam.json.siupt.grades.JGradeResultUPT;
 import dam.projects.projectdam.network.HttpNRequest;
 import dam.projects.projectdam.network.RequestDetail;
+import dam.projects.projectdam.network.SIUPTinfo;
 import dam.projects.projectdam.objects.AcademicYear;
 import dam.projects.projectdam.objects.Course;
 import dam.projects.projectdam.objects.Grade;
