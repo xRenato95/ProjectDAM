@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="70dp"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/schedule_initial"
+        android:text="@string/schedule_initial_time"
+        android:textSize="17sp"
+        android:layout_width="55dp"
+        android:layout_height="40dp"
+        android:gravity="fill_vertical|center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/schedule_final"
+        android:text="@string/schedule_final_time"
+        android:textSize="17sp"
+        android:layout_width="55dp"
+        android:layout_height="40dp"
+        android:gravity="fill_vertical|center_horizontal"
+        android:layout_below="@+id/schedule_initial"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/schedule_desc"
+        android:id="@+id/schedule_desc"
+        android:textSize="17sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/schedule_view"
+        android:layout_alignParentBottom="true"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_toEndOf="@+id/schedule_initial"
+        android:layout_toStartOf="@+id/schedule_room"
+        android:textStyle="bold"
+        android:password="false"
+        android:autoText="false"
+        android:gravity="fill_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:text="@string/schedule_room"
+        android:id="@+id/schedule_room"
+        android:textSize="17sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/schedule_type_class"
+        android:layout_alignParentTop="true"
+        android:gravity="fill_vertical|center_horizontal"
+        android:layout_alignBottom="@+id/schedule_initial" />
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="match_parent"
+        android:text="@string/schedule_type_class"
+        android:id="@+id/schedule_type_class"
+        android:textSize="17sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:gravity="fill_vertical|center_horizontal"
+        android:layout_alignParentStart="false"
+        android:layout_alignBottom="@+id/schedule_view"
+        android:layout_below="@+id/schedule_room" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#e4d6d6"
+        android:layout_below="@+id/schedule_final"
+        android:id="@+id/schedule_view" />
+</RelativeLayout>

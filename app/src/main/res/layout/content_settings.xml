@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#b6abad"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="dam.projects.projectdam.gui.SettingsActivity"
+    tools:showIn="@layout/activity_settings">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_timeout"
+        android:id="@+id/tv_timeout_connection"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/timeout_connection"
+        android:layout_toStartOf="@+id/timeout_connection"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:textColor="#000000" />
+
+    <NumberPicker
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeout_connection"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_timerequest_events"
+        android:id="@+id/tv_interval_events"
+        android:layout_alignTop="@+id/interval_events"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/interval_events"
+        android:layout_toStartOf="@+id/interval_events"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:textColor="#000000" />
+
+    <NumberPicker
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/interval_events"
+        android:layout_below="@+id/tv_timeout_connection"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_timerequest_marks"
+        android:id="@+id/tv_interval_marks"
+        android:layout_alignTop="@+id/interval_marks"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/interval_marks"
+        android:layout_alignBottom="@+id/interval_marks"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:textColor="#000000" />
+
+    <NumberPicker
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/interval_marks"
+        android:layout_below="@+id/tv_interval_events"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_timerequest_schedule"
+        android:id="@+id/tv_interval_schedule"
+        android:layout_alignTop="@+id/interval_schedule"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/interval_schedule"
+        android:layout_toStartOf="@+id/interval_schedule"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:textColor="#000000" />
+
+    <NumberPicker
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/interval_schedule"
+        android:layout_below="@+id/interval_marks"
+        android:layout_toEndOf="@+id/tv_interval_marks"
+        android:layout_marginTop="34dp" />
+</RelativeLayout>

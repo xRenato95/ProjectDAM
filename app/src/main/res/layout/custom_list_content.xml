@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="80dp">
+
+    <TextView
+        android:id="@+id/event_main_name"
+        android:text="@string/event_name_main"
+        android:textSize="17dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:id="@+id/event_main_day"
+        android:text="@string/event_date_day"
+        android:textSize="17dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/event_main_name"
+        android:layout_toEndOf="@+id/event_main_name" />
+
+    <TextView
+        android:id="@+id/event_main_admin"
+        android:text="@string/event_admin_main"
+        android:textSize="17dp"
+        android:layout_marginLeft="2dp"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/event_main_name"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:id="@+id/event_main_desc"
+        android:text="@string/event_desc_main"
+        android:textSize="17dp"
+        android:layout_marginLeft="2dp"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/event_main_admin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:id="@+id/event_main_month"
+        android:text="@string/event_date_month"
+        android:textSize="17dp"
+        android:layout_marginLeft="2dp"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_toEndOf="@+id/event_main_name"
+        android:layout_below="@+id/event_main_day"
+        android:layout_above="@+id/event_main_desc" />
+
+    <TextView
+        android:id="@+id/event_main_year"
+        android:text="@string/event_date_year"
+        android:textSize="17dp"
+        android:layout_marginLeft="2dp"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_toEndOf="@+id/event_main_admin"
+        android:layout_below="@+id/event_main_month"
+        android:layout_alignParentBottom="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#e4d6d6"
+        android:layout_below="@+id/event_main_desc"
+        android:id="@+id/event_view" />
+</RelativeLayout>

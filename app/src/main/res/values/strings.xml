@@ -1,0 +1,317 @@
+<resources>
+    <string name="app_name">UPT</string>
+    <string name="title_activity_menu">UPT</string>
+    <string name="navigation_drawer_open">Abrir navigation drawer</string>
+    <string name="navigation_drawer_close">Fechar navigation drawer</string>
+    <string name="action_login">Login</string>
+    <string name="text_events">Eventos</string>
+    <string name="text_events_main">Eventos Públicos</string>
+    <string name="event_name_main">Nome</string>
+    <string name="event_admin_main">Administrador</string>
+    <string name="event_desc_main">Descrição</string>
+    <string name="event_date_day">Dia</string>
+    <string name="event_date_month">Mês</string>
+    <string name="event_date_year">Ano</string>
+    <string name="text_exams">Exames</string>
+    <string name="title_activity_friends">Amigos</string>
+    <string name="title_activity_login">UPT</string>
+    <string name="title_activity_create_event">Criar Evento</string>
+    <string name="title_navigation_drawer">O que pretendes fazer?</string>
+    <string name="nav_event">Eventos</string>
+    <string name="nav_friends">Amigos</string>
+    <string name="nav_exams">Exames</string>
+    <string name="nav_marks">Notas</string>
+    <string name="nav_schedule">Horário</string>
+    <string name="nav_logoff">Terminar Sessão</string>
+    <string name="action_logoff_all">Terminar Sessão em todos os dispositivos</string>
+    <string name="action_settings">Definições</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_student_number">Número de Estudante</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="text_session">Guardar sessão?</string>
+    <string name="title_login_in">Login</string>
+    <string name="text_login_in">Entrando...</string>
+    <string name="title_login_out">Logout</string>
+    <string name="text_login_out">De momento não é possivel fazer logout, tente mais tarde.</string>
+    <string name="title_unavailable_service">Serviço Indisponível</string>
+    <string name="text_unavailable_service">Tente mais tarde.</string>
+    <string name="title_invalid_credentials">Credenciais Inválidas</string>
+    <string name="text_invalid_credentials">Tente novamente.</string>
+    <string name="title_net_problem">Problemas na Internet</string>
+    <string name="text_net_problem">Não foi possível estabelecer ligação.</string>
+    <string name="title_server_maintenance">Servidor em Manutenção</string>
+    <string name="text_server_maintenance">Tente mais tarde.</string>
+    <string name="title_activity_settings">Definições</string>
+    <string name="text_proxy_problem">Problemas no Proxy</string>
+    <string name="title_proxy_problem">Configure corretamente.</string>
+    <string name="text_global_problem">Ups! Algo não correu como planeado!</string>
+    <string name="title_global_problem">Tente novamente.</string>
+    <string name="text_session_again">Inicie sessão novamente.</string>
+    <string name="close_dialog_network">Fechar</string>
+
+    <!-- Strings related to create event -->
+    <string name="event_name">Nome:</string>
+    <string-array name="event_categories">
+        <item>@string/event_cats_1</item>
+        <item>@string/event_cats_2</item>
+        <item>@string/event_cats_3</item>
+        <item>@string/event_cats_4</item>
+        <item>@string/event_cats_5</item>
+    </string-array>
+    <string name="event_cats_1">Geral</string>
+    <string name="event_cats_2">Estudo</string>
+    <string name="event_cats_3">Lazer</string>
+    <string name="event_cats_4">Cultural</string>
+    <string name="event_cats_5">Científico</string>
+    <string name="event_description">Descrição:</string>
+    <string name="event_date">Data:</string>
+    <string-array name="event_dates">
+        <item>@string/event_dat_1</item>
+        <item>@string/event_dat_2</item>
+    </string-array>
+    <string name="event_dat_1">Todo dia</string>
+    <string name="event_dat_2">Data e hora</string>
+    <string name="event_initial_date">Data Inicial:</string>
+    <string name="event_final_date">Data Final:</string>
+    <string name="event_initial_hour">Hora Inicial:</string>
+    <string name="event_final_hour">Hora Final:</string>
+    <string name="hint_day">aaaa-mm-dd</string>
+    <string name="hint_hour">hh:mm</string>
+    <string name="event_local">Local:</string>
+    <string name="event_visibility">Visibilidade:</string>
+    <string-array name="event_visibilities">
+        <item>@string/event_vis_1</item>
+        <item>@string/event_vis_2</item>
+        <item>@string/event_vis_3</item>
+    </string-array>
+    <string name="event_vis_1">Privado</string>
+    <string name="event_vis_2">Apenas amigos</string>
+    <string name="event_vis_3">Público</string>
+    <string name="event_calendar">Calendário:</string>
+    <string name="event_add_calendar">ADICIONAR</string>
+    <string name="title_calendar">Calendário</string>
+    <string name="text_calendar">Adicionar o evento ao calendário?</string>
+    <string name="positive_calendar">SIM</string>
+    <string name="negative_calendar">NÃO</string>
+    <string name="event_add">CRIAR EVENTO</string>
+    <string name="event_escolher">Escolher...</string>
+    <string name="impossible_event">Não foi possível criar o evento.</string>
+    <string name="choose_types">Tens que escolher uma categoria e visibilidade!</string>
+    <string name="wrong_title">O título está errado!</string>
+    <string name="wrong_description">A descrição está errado!</string>
+    <string name="wrong_local">O local está errado!</string>
+    <string name="network_connect">Não há ligação à Internet disponível.</string>
+    <string name="event_added">Evento adicionado ao calendário!</string>
+    <string name="event_choose">Escolher...</string>
+    <string name="event_type_geral">Geral</string>
+    <string name="event_visibility_private">Privado</string>
+    <string name="event_visibility_friends">Só para amigos</string>
+    <string name="event_visibility_public">Público</string>
+    <string name="create_event_calendar">Chamando a API do Calendário da Google...</string>
+    <string name="create_event_calendar_req1">Este aplicativo requer serviços do Google Play. Por favor, instale</string>
+    <string name="create_event_calendar_req2">serviços do Google Play no seu dispositivo e iniciar este aplicativo.</string>
+    <string name="title_create_success">Sucesso!</string>
+    <string name="text_create_success">Evento criado com sucesso!</string>
+    <string name="title_create_error1">Ups!..</string>
+    <string name="text_create_error1">Não foi possível criar o evento!</string>
+    <string name="title_create_error2">Ups!..</string>
+    <string name="text_create_error2">O tipo ou a visibilidade do evento são inválidas!</string>
+    <string name="title_create_error3">Ups!..</string>
+    <string name="text_create_error3">As datas não estão corretas!</string>
+
+    <!-- Strings related to list events -->
+    <string name="title_list_events">Lista Eventos</string>
+    <string-array name="events_visibilities">
+        <item>@string/events_vis_1</item>
+        <item>@string/events_vis_2</item>
+        <item>@string/events_vis_3</item>
+    </string-array>
+    <string name="events_vis_3">Públicos</string>
+    <string name="events_vis_1">Privados</string>
+    <string name="events_vis_2">Apenas Amigos</string>
+    <string name="event_title_guests">Convidados</string>
+    <string name="event_btn_ok">OK</string>
+    <string name="title_add_guests">Escolher Convidados</string>
+    <string name="positive_add_guests">OK</string>
+    <string name="title_impossible_events">Não foi possível obter os eventos pretendidos!</string>
+    <string name="text_impossible_events">Fechar</string>
+    <string name="events_recent_impossible">Não foi possível mostrar os eventos mais recentes.</string>
+    <string name="events_recent_close">Fechar</string>
+
+    <!-- Strings related to event properties -->
+    <string name="title_activity_properties_event_admin">Propriedades do Evento</string>
+    <string name="title_activity_properties_event">Propriedades do Evento</string>
+    <string name="event_list_name">Nome:</string>
+    <string name="event_list_desc">Descrição:</string>
+    <string name="event_list_initial_date">Data Inicial:</string>
+    <string name="event_list_final_date">Data Final:</string>
+    <string name="event_list_guest">Convidados:</string>
+    <string name="event_favorite">Favorito:</string>
+    <string name="event_list_calendar">Calendário:</string>
+    <string name="event_list_add_calendar">ADICIONAR</string>
+    <string name="event_list_btn">OK</string>
+    <string name="event_list_choose_guest">ADICIONAR</string>
+    <string name="properties_error_occurred">O seguinte erro ocorreu:</string>
+    <string name="properties_request_cancel">Pedido cancelado.</string>
+    <string name="properties_event_on_calendar">Evento adicionado ao Calendário!</string>
+    <string name="properties_app_need">Este aplicativo precisa acessar sua conta do Google (via Contactos).</string>
+    <string name="title_properties_error_1">Ups!</string>
+    <string name="text_properties_error_1">Não foi possível adicionar aos favoritos.</string>
+    <string name="title_properties_error_2">Ups!</string>
+    <string name="text_properties_error_2">Não foi possível remover dos favoritos.</string>
+    <string name="title_properties_error_3">Ups!</string>
+    <string name="text_properties_error_3">Não foi possível adicionar uma classificação ao evento.</string>
+    <string name="network_incorrect">Nenhuma rede disponível.</string>
+
+    <!-- Strings related to settings -->
+    <string name="settings_timeout">Tempo de conexão timeout:</string>
+    <string name="settings_timerequest_events">Intervalo entre cada pedido para obtenção de <b>eventos</b>:</string>
+    <string name="settings_timerequest_marks">Intervalo entre cada pedido para obtenção de <b>notas</b>:</string>
+    <string name="settings_timerequest_schedule">Intervalo entre cada pedido para obtenção de <b>horário</b>:</string>
+
+    <!-- Strings related to friends/invitations -->
+    <string name="title_friend_delete">Eliminar Amigo</string>
+    <string name="positive_friend_delete">Eliminar</string>
+    <string name="negative_friend_delete">Cancelar</string>
+    <string name="tab_friends">AMIGOS</string>
+    <string name="tab_invitations">CONVITES</string>
+    <string name="list_value_name">Nome</string>
+    <string name="list_value_number">Número</string>
+    <string name="searchbar_hint">Procura um estudante...</string>
+    <string name="title_friend_accept">Aceitar Convite</string>
+    <string name="negative_friend_accept">Rejeitar</string>
+    <string name="positive_friend_accept">Aceitar</string>
+    <string name="question_friend_accept">Deseja aceitar este convite?</string>
+    <string name="title_invitation_accept">Convite aceite!</string>
+    <string name="title_friend_removed">Amigo eliminado!</string>
+    <string name="text_friend_removed">Eliminado com sucesso.</string>
+    <string name="text_invitation_accept">Tem um novo amigo!</string>
+    <string name="title_invitation_reject">Não foi possível aceitar o convite!</string>
+    <string name="text_invitation_reject">Tente mais tarde.</string>
+    <string name="title_friend_reject">Não foi possível eliminar o amigo!</string>
+    <string name="text_friend_reject">Tente mais tarde.</string>
+    <string name="text_search">A procurar...</string>
+    <string name="title_invitation_removed">Convite removido!</string>
+    <string name="text_invitation_removed">Convite removido com sucesso!</string>
+    <string name="title_invitation_impossible">Não foi possível recusar o convite!</string>
+    <string name="text_invitation_impossible">Tente mais tarde.</string>
+    <string name="title_no_student">Não existe!</string>
+    <string name="text_no_student">Este estudante não existe.</string>
+    <string name="title_success_invitation">Convite enviado!</string>
+    <string name="text_success_invitation">Convite enviado com sucesso!</string>
+    <string name="title_unable_invitation">Não foi possível enviar o convite!</string>
+    <string name="text_unable_invitation">Tente mais tarde.</string>
+    <string name="title_student_exist">Não foi possível enviar o convite!</string>
+    <string name="text_student_exist">O estudante já é seu amigo.</string>
+    <string name="title_invitation_sent">Não foi possível enviar o convite!</string>
+    <string name="text_invitation_sent">Já foi enviado um convite para este estudante.</string>
+    <string name="title_add_student">Deseja adicionar este estudante?</string>
+    <string name="negative_add_student">Não</string>
+    <string name="positive_add_student">Sim</string>
+    <string name="title_invitation_unable">Não foi possível enviar o convite!</string>
+    <string name="text_invitation_unable">Não podes enviar um convite para ti próprio.</string>
+    <string name="event_category">Categoria:</string>
+    <string name="notification_new_invites">Novos Convites</string>
+    <string name="notification_new_invite">Novo Convite</string>
+    <string name="notification_upt_marks">Notas UPT</string>
+
+    <!-- Strings related to schedule -->
+    <string name="schedule_initial_time">hh:mm</string>
+    <string name="schedule_final_time">hh:mm</string>
+    <string name="schedule_desc">Descrição</string>
+    <string name="schedule_room">Sala</string>
+    <string name="schedule_type_class">Tipo Aula</string>
+    <string-array name="schedule_semesters">
+        <item>@string/schedule_sem_1</item>
+        <item>@string/schedule_sem_2</item>
+    </string-array>
+    <string name="schedule_sem_1">1º Semestre</string>
+    <string name="schedule_sem_2">2º Semestre</string>
+    <string-array name="schedule_years">
+        <item>@string/schedule_yea_1</item>
+        <item>@string/schedule_yea_2</item>
+    </string-array>
+    <string name="schedule_yea_1">2014/2015</string>
+    <string name="schedule_yea_2">2015/2016</string>
+    <string name="group_sunday">Domingo</string>
+    <string name="group_monday">Segunda-feira</string>
+    <string name="group_tuesday">Terça-feira</string>
+    <string name="group_wednesday">Quarta-feira</string>
+    <string name="group_thursday">Quinta-feira</string>
+    <string name="group_friday">Sexta-feira</string>
+    <string name="group_saturday">Sábado</string>
+    <string name="title_impossible_schedule">Não foi possível obter o horário pretendido!</string>
+    <string name="text_impossible_schedule">Fechar</string>
+
+    <!-- Strings related to marks -->
+    <string-array name="marks_semesters">
+        <item>@string/marks_sem_1</item>
+        <item>@string/marks_sem_2</item>
+    </string-array>
+    <string name="marks_sem_1">1º semestre</string>
+    <string name="marks_sem_2">2º semestre</string>
+    <string-array name="marks_years">
+        <item>@string/marks_yea_1</item>
+        <item>@string/marks_yea_2</item>
+        <item>@string/marks_yea_3</item>
+    </string-array>
+    <string name="marks_yea_1">2013/2014</string>
+    <string name="marks_yea_2">2014/2015</string>
+    <string name="marks_yea_3">2015/2016</string>
+    <string-array name="marks_periods">
+        <item>@string/marks_per_0</item>
+        <item>@string/marks_per_1</item>
+        <item>@string/marks_per_2</item>
+        <item>@string/marks_per_3</item>
+    </string-array>
+    <string name="marks_per_0">Qualquer Época</string>
+    <string name="marks_per_1">Época Normal</string>
+    <string name="marks_per_2">Época Recurso</string>
+    <string name="marks_per_3">Época Especial</string>
+    <string-array name="marks_situations">
+        <item>@string/marks_sit_0</item>
+        <item>@string/marks_sit_1</item>
+        <item>@string/marks_sit_2</item>
+        <item>@string/marks_sit_3</item>
+    </string-array>
+    <string name="marks_sit_0">Todas</string>
+    <string name="marks_sit_1">com notas lançadas</string>
+    <string name="marks_sit_2">agendadas e inscrito</string>
+    <string name="marks_sit_3">agendadas por inscrever</string>
+    <string name="mark_uc">Unidade Curricular</string>
+    <string name="mark_epoca">Época</string>
+    <string name="mark_type_avaliation">Tipo Avaliação</string>
+    <string name="mark_grade">Nota</string>
+    <string name="text_wait_dialog">A carregar...</string>
+    <string name="text_impossible_marks">Não foi possível obter as notas pretendidas!</string>
+    <string name="notification_new_marks">Novas Notas</string>
+    <string name="notification_new_mark">Nova Nota</string>
+
+    <!-- Strings related to marks -->
+    <string name="title_member_error1">Ups!</string>
+    <string name="text_member_error1">Não foi possível obter os membros deste evento.</string>
+    <string name="title_member_error2">Ups!</string>
+    <string name="text_member_error2">Não foi possível obter os convites deste evento.</string>
+    <string name="title_member_error3">Não foi possível!</string>
+    <string name="text_member_error3">De momento não pode aceitar o convite.</string>
+    <string name="title_member_error4">Sem sucesso...</string>
+    <string name="text_member_error4">De momento não pode remover.</string>
+    <string name="title_member_error5">Sem sucesso!</string>
+    <string name="text_member_error5">Não pode adicionar adicionar-se a si próprio!</string>
+    <string name="title_member_error6">O evento não existe!</string>
+    <string name="text_member_error6">Feche, abra a aplicação e tente novamente.</string>
+    <string name="title_member_error7">Sem sucesso!</string>
+    <string name="text_member_error7">Não pode fazer um convite a esse estudante.</string>
+    <string name="title_member_error8">Sem sucesso!</string>
+    <string name="text_member_error8">O estudante tem de ser seu amigo para ser adicionado.</string>
+    <string name="title_member_error9">Sem sucesso!</string>
+    <string name="text_member_error9">De momento não pode remover.</string>
+    <string name="title_member_error10">Sucesso!</string>
+    <string name="text_member_error10">O convite foi enviado com sucesso!</string>
+    <string name="title_member_success1">Sucesso!</string>
+    <string name="text_member_success1">Removeu com sucesso.</string>
+    <string name="title_member_success2">Sucesso!</string>
+    <string name="text_member_success2">O convite foi enviado com sucesso!</string>
+</resources>
