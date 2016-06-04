@@ -29,6 +29,7 @@ import dam.projects.projectdam.R;
 import dam.projects.projectdam.exception.InvalidStudentException;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
+import dam.projects.projectdam.helpers.HelpersDB;
 import dam.projects.projectdam.helpers.HelpersDate;
 import dam.projects.projectdam.json.JSONClass;
 import dam.projects.projectdam.json.siupt.JResultUPT;
@@ -414,36 +415,12 @@ public class MarksActivity extends Fragment {
                         return Code.GET_GRADE_ERR;
                     }
                     // add to database
-                    db.insertGrades(convertGrades(jresult, request));
+                    db.insertGrades(HelpersDB.convertGrades(jresult, request));
                     return Code.GET_GRADE_SUC;
                 default:
                     return Code.COD_UNHANDLED_EXC;
             }
         }
-        private Grade[] convertGrades(JGradeResultUPT json, HttpNRequest request) {
-            ArrayList<Grade> list = new ArrayList<>();
-            for (JGradeUPT each : json.result) {
-                list.add(new Grade(each.pv_data_inicio == null ? null : HelpersDate.stringToDateTimeUPT(each.pv_data_inicio),
-                        each.d_nome,
-                        each.pvep_nome,
-                        each.avi_nome,
-                        each.dfm_nome,
-                        each.pvn_media,
-                        each.pvn_observacao,
-                        each.pv_observacao,
-                        each.observacao,
-                        each.nota,
-                        each.est_nome,
-                        each.assiduidade,
-                        each.est_assiduidade,
-                        each.dfm_nota_minima,
-                        each.dfm_peso,
-                        (request.getParametersDetails()[5].equals("null") ? null : Integer.parseInt(request.getParametersDetails()[5])),
-                        (request.getParametersDetails()[6].equals("null") ? null : Integer.parseInt(request.getParametersDetails()[6])),
-                        (request.getParametersDetails()[4].equals("null") ? null : Integer.parseInt(request.getParametersDetails()[4])),
-                        AcademicYear.toObject(request.getParametersDetails()[3])));
-            }
-            return list.toArray(new Grade[list.size()]);
-        }
+
     }
 }

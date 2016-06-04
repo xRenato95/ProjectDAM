@@ -39,6 +39,7 @@ import dam.projects.projectdam.exception.InvalidStudentException;
 import dam.projects.projectdam.gui.IActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
+import dam.projects.projectdam.helpers.HelpersDB;
 import dam.projects.projectdam.json.JSONClass;
 import dam.projects.projectdam.json.server.JServerAbstract;
 import dam.projects.projectdam.json.server.friend.JFriend;
@@ -355,15 +356,7 @@ public class FriendsActivity extends Fragment {
      * @param isInvite bla
      * @return bla
      */
-    private Friend[] jsonIntoFriends(JResultFriend json, boolean isInvite) {
-        List<JFriend> jFriends = json.result;
-        ArrayList<Friend> friends = new ArrayList<>();
-        for (JFriend each : jFriends) {
-            friends.add(new Friend(each.friend_name, each.friend_id, each.friend_mail,
-                    each.friend_photo, null, isInvite));
-        }
-        return friends.toArray(new Friend[friends.size()]);
-    }
+
 
     /**
      * By Renato
@@ -572,7 +565,7 @@ public class FriendsActivity extends Fragment {
                     jfriend = (JResultFriend) json;
                     if (!Helpers.checkJsonObject(jfriend)) return Code.GET_FRIENDS_ERR;
                     // add to friends to db
-                    Friend[] friends = jsonIntoFriends(jfriend, false);
+                    Friend[] friends = HelpersDB.jsonIntoFriends(jfriend, false);
                     db.insertFriends(friends, false);
                     if(friends.length > 0) {
                         //db.insertFriends(friends, false);
@@ -583,7 +576,7 @@ public class FriendsActivity extends Fragment {
                     jfriend = (JResultFriend) json;
                     if (!Helpers.checkJsonObject(jfriend)) return Code.GET_FRI_INV_ERR;
                     // add friends to db
-                    friends = jsonIntoFriends(jfriend, true);
+                    friends = HelpersDB.jsonIntoFriends(jfriend, true);
                     db.insertFriends(friends, true);
                     if(friends.length > 0) {
                         //db.insertFriends(friends, true);

@@ -21,6 +21,7 @@ import dam.projects.projectdam.gui.MenuActivity;
 import dam.projects.projectdam.gui.marks.MarksActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
+import dam.projects.projectdam.helpers.HelpersDB;
 import dam.projects.projectdam.json.JSONClass;
 import dam.projects.projectdam.json.siupt.JResultUPT;
 import dam.projects.projectdam.json.siupt.grades.JGradeResultUPT;
@@ -112,8 +113,7 @@ public class MarksAsync extends AsyncTask<HttpNRequest, Void, Code> {
                     if (!Helpers.jsonToObject(jsonContent, JResultUPT.class).isValid()) return Code.GET_GRADE_NULL;
                     return Code.GET_GRADE_ERR;
                 }
-                //TODO json to Grade[]
-                Grade[] newGrades = db.getNewGrades(new Grade[0]);
+                Grade[] newGrades = HelpersDB.convertGrades(jresult, request);
                 if(newGrades.length>0) {
                     String notificationUptMarks = context.getString(R.string.notification_upt_marks);
                     noti.createNotification(Code.GRADES_NOTIFICATION.code, notificationUptMarks, newGrades, R.mipmap.photo, MenuActivity.class);

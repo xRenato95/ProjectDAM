@@ -39,6 +39,7 @@ import dam.projects.projectdam.exception.InvalidStudentException;
 import dam.projects.projectdam.gui.IActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
+import dam.projects.projectdam.helpers.HelpersDB;
 import dam.projects.projectdam.helpers.HelpersDate;
 import dam.projects.projectdam.json.JSONClass;
 import dam.projects.projectdam.json.siupt.JResultUPT;
@@ -391,25 +392,11 @@ public class ScheduleActivity extends Fragment {
                     jresult = (JScheduleResultUPT) json;
                     if (!jresult.isValid()) return Code.GET_SCHEDULE_ERR;
                     // add to database
-                    db.insertScheduleDays(convertSchedule(jresult, request));
+                    db.insertScheduleDays(HelpersDB.convertSchedule(jresult, request));
                     return Code.GET_SCHEDULE_SUC;
                 default:
                     return Code.COD_UNHANDLED_EXC;
             }
-        }
-
-        private ScheduleDay[] convertSchedule(JScheduleResultUPT json, HttpNRequest request) {
-            ArrayList<ScheduleDay> list = new ArrayList<>();
-            for (JScheduleUPT each : json.result) {
-                list.add(new ScheduleDay(each.horario_id, each.disciplina_nome,
-                        each.tipo_ensino_nome, each.tipo_ensino_abreviatura,
-                        each.sala_nome, each.turma_nome,
-                        HelpersDate.dateStringToHour(each.horario_hora_inicio),
-                        HelpersDate.dateStringToHour(each.horario_hora_fim),
-                        each.horario_duracao, (each.horario_dia_semana),
-                        AcademicYear.toObject(request.getParametersDetails()[3]), Integer.parseInt(request.getParametersDetails()[4])));
-            }
-            return list.toArray(new ScheduleDay[list.size()]);
         }
     }
 }

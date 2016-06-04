@@ -40,6 +40,7 @@ import dam.projects.projectdam.exception.InvalidStudentException;
 import dam.projects.projectdam.gui.IActivity;
 import dam.projects.projectdam.helpers.Code;
 import dam.projects.projectdam.helpers.Helpers;
+import dam.projects.projectdam.helpers.HelpersDB;
 import dam.projects.projectdam.json.server.JServerAbstract;
 import dam.projects.projectdam.objects.EventFinal;
 import dam.projects.projectdam.sqlite.DataBase;
@@ -373,47 +374,23 @@ public class EventsActivity extends Fragment {
                     jresult = (JResultEvent) json;
                     if (!Helpers.checkJsonObject(jresult)) return Code.GET_EVENTS_PUB_ERR;
                     // add to database
-                    db.insertEvents(convertEvents(jresult));
+                    db.insertEvents(HelpersDB.convertEvents(jresult));
                     return Code.GET_EVENTS_PUB_SUC;
                 case GET_PRI_EV_REQ:
                     jresult = (JResultEvent) json;
                     if (!Helpers.checkJsonObject(jresult)) return Code.GET_EVENTS_PRI_ERR;
                     // add to database
-                    db.insertEvents(convertEvents(jresult));
+                    db.insertEvents(HelpersDB.convertEvents(jresult));
                     return Code.GET_EVENTS_PRI_SUC;
                 case GET_FRI_EV_REQ:
                     jresult = (JResultEvent) json;
                     if (!Helpers.checkJsonObject(jresult)) return Code.GET_EVENTS_FRI_ERR;
                     // add to database
-                    db.insertEvents(convertEvents(jresult));
+                    db.insertEvents(HelpersDB.convertEvents(jresult));
                     return Code.GET_EVENTS_FRI_SUC;
                 default:
                     return Code.COD_UNHANDLED_EXC;
             }
-        }
-
-        private EventFinal[] convertEvents(JResultEvent json) {
-            ArrayList<EventFinal> list = new ArrayList<>();
-            for (JEvent each : json.result) {
-                list.add(new EventFinal(
-                        each.e_id,
-                        Integer.parseInt(each.e_admin),
-                        new EventType(each.e_type_id, each.e_type_code),
-                        new VisibilityType(each.e_visibi_id, each.e_visibi_code),
-                        each.e_title,
-                        each.e_desc,
-                        each.e_local,
-                        HelpersDate.stringToDate(each.e_date_begin),
-                        each.e_date_end != null ? HelpersDate.stringToDate(each.e_date_end) : null,
-                        each.e_hour_begin != null ? HelpersDate.stringToHour(each.e_hour_begin) : null,
-                        each.e_hour_end != null ? HelpersDate.stringToHour(each.e_hour_end) : null,
-                        HelpersDate.stringToDateTimeUPT(each.e_date_create),
-                        each.e_number_members,
-                        each.e_average_rating
-
-                ));
-            }
-            return list.toArray(new EventFinal[list.size()]);
         }
     }
 
@@ -685,13 +662,13 @@ public class EventsActivity extends Fragment {
                         jmember = (JResultMember) json;
                         if (!Helpers.checkJsonObject(jmember)) return Code.GET_MEMBERS_ERR;
                         // add members to database
-                        db.insertMembers(convertMembers(jmember));
+                        db.insertMembers(HelpersDB.convertMembers(jmember));
                         return Code.GET_MEMBERS_SUC;
                     case GET_MEM_INV_REQ:
                         jmemberinv = (JResultMemberInv) json;
                         if (!Helpers.checkJsonObject(jmemberinv)) return Code.GET_MEM_INV_ERR;
                         // add members inv to database
-                        db.insertMemberInvs(convertMembersInv(jmemberinv));
+                        db.insertMemberInvs(HelpersDB.convertMembersInv(jmemberinv));
                         return Code.GET_MEM_INV_SUC;
                     case RMV_MEMBER_REQ:
                         jserver = (JServerAbstract) json;
@@ -703,63 +680,6 @@ public class EventsActivity extends Fragment {
                         return Code.COD_UNHANDLED_EXC;
                 }
                 return null;
-            }
-
-            private Member[] convertMembers(JResultMember json) {
-                ArrayList<Member> list = new ArrayList<>();
-                for (JMember each : json.result) {
-                    list.add(new Member(
-                            each.m_id,
-                            each.e_id,
-                            each.m_rating,
-                            new Student(
-                                    0,
-                                    each.m_student_number,
-                                    each.m_student_name,
-                                    each.m_student_mail,
-                                    each.m_student_photo
-                            ),
-                            each.m_favorite == 1
-                    ));
-                }
-                return list.toArray(new Member[list.size()]);
-            }
-
-            private MemberInvite[] convertMembersInv(JResultMemberInv json) {
-                ArrayList<MemberInvite> list = new ArrayList<>();
-                for (JMemberInv each : json.result) {
-                    list.add(new MemberInvite(
-                            each.m_id,
-                            new Member(
-                                    each.m_id,
-                                    each.event_id,
-                                    each.m_rating,
-                                    new Student(
-                                            0,
-                                            each.m_student_number,
-                                            each.m_student_name,
-                                            each.m_student_mail,
-                                            each.m_student_photo
-                                    ),
-                                    each.m_favorite == 1),
-                            new EventFinal(
-                                    each.event_id,
-                                    Integer.parseInt(each.e_admin),
-                                    new EventType(each.e_type_id, each.e_type_code),
-                                    new VisibilityType(each.e_visibi_id, each.e_visibi_code),
-                                    each.e_title,
-                                    each.e_desc,
-                                    each.e_local,
-                                    HelpersDate.stringToDate(each.e_date_begin),
-                                    each.e_date_end != null ? HelpersDate.stringToDate(each.e_date_end) : null,
-                                    each.e_hour_begin != null ? HelpersDate.stringToHour(each.e_hour_begin) : null,
-                                    each.e_hour_end != null ? HelpersDate.stringToHour(each.e_hour_end) : null,
-                                    HelpersDate.stringToDateTimeUPT(each.e_date_create),
-                                    each.e_number_members,
-                                    each.e_average_rating
-                            )));
-                }
-                return list.toArray(new MemberInvite[list.size()]);
             }
         }
     }
