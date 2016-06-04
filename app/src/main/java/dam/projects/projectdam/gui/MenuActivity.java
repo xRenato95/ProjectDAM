@@ -1,9 +1,12 @@
 package dam.projects.projectdam.gui;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,6 +53,7 @@ import dam.projects.projectdam.json.siupt.grades.JGradeResultUPT;
 import dam.projects.projectdam.json.siupt.grades.JGradeUPT;
 import dam.projects.projectdam.network.HttpNRequest;
 import dam.projects.projectdam.network.HttpNResponse;
+import dam.projects.projectdam.network.MyService;
 import dam.projects.projectdam.network.RequestDetail;
 import dam.projects.projectdam.network.SIUPTinfo;
 import dam.projects.projectdam.notifications.Notification;
@@ -106,52 +110,20 @@ public class MenuActivity extends AppCompatActivity
         }
 
         // get database object reference
-        Helpers.setUserGrades(getApplicationContext());
+        //Helpers.setUserGrades(getApplicationContext());
         db = new DataBase(getActivity());
         //MarksAsync ma = new MarksAsync(db,getApplicationContext());
        // ma.setRepeatingAsyncTask();
         //UpdateAsync ua = new UpdateAsync(db,getApplicationContext());
         //ua.setRepeatingAsyncTask();
-        mHandlerMarks = new Handler();
-        mHandlerInvitations = new Handler();
-        startRepeatingTaskMarks();
-        startRepeatingTaskInvitations();
-    }
-
-    Runnable mStatusCheckerMarks = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                new MarksAsync(db,getApplicationContext()).setRepeatingAsyncTask();
-                //this function can change value of mInterval.
-            } finally {
-                mInterval *= 1.3;
-                if(mInterval >= 1800*1000){
-                    mInterval = 1800 * 1000;
-                }
-                mHandlerMarks.postDelayed(mStatusCheckerMarks, mInterval);
-            }
+       // mHandlerMarks = new Handler();
+        //mHandlerInvitations = new Handler();
+        //startRepeatingTaskMarks();
+        //startRepeatingTaskInvitations();
+        if (!isMyServiceRunning()){
+            Intent serviceIntent = new Intent(getApplicationContext(),MyService.class);
+            getApplicationContext().startService(serviceIntent);
         }
-    };
-
-    Runnable mStatusCheckerInvitations = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                new UpdateAsync(db,getApplicationContext()).setRepeatingAsyncTask();
-                //this function can change value of mInterval.
-            } finally {
-                mHandlerInvitations.postDelayed(mStatusCheckerInvitations, mInterval);
-            }
-        }
-    };
-
-    void startRepeatingTaskMarks() {
-        mStatusCheckerMarks.run();
-    }
-
-    void startRepeatingTaskInvitations() {
-        mStatusCheckerInvitations.run();
     }
 
     @Override
@@ -285,6 +257,16 @@ public class MenuActivity extends AppCompatActivity
     }
     private void stopProgressBar() {
         Helpers.stopProgressDialog(progressDialog);
+    }
+
+    private boolean isMyServiceRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (MyService.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

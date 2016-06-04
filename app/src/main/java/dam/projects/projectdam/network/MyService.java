@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.joda.time.LocalDateTime;
 
 import java.util.ArrayList;
 
+import dam.projects.projectdam.R;
 import dam.projects.projectdam.global.MarksAsync;
 import dam.projects.projectdam.global.UpdateAsync;
+import dam.projects.projectdam.notifications.Notification;
 import dam.projects.projectdam.objects.AcademicYear;
 import dam.projects.projectdam.objects.Grade;
 import dam.projects.projectdam.sqlite.DataBase;
@@ -21,7 +24,7 @@ import dam.projects.projectdam.sqlite.DataBase;
  */
 public class MyService extends Service {
 
-    private int mInterval = 60 * 1000; // Começa com 1 minutos
+    private int mInterval = 5 * 1000; // Começa com 1 minutos
     private Handler mHandlerMarks,mHandlerInvitations;
     private Runnable mStatusCheckerMarks= null,mStatusCheckerInvitations = null;
     DataBase db;
@@ -44,6 +47,9 @@ public class MyService extends Service {
                         mInterval = 1800 * 1000;
                     }
                     Log.i("TEMPO",mInterval/60+"");
+                    String[] string = new String[1];
+                    string[0] = "IT WORKS!";
+                    new Notification(getApplicationContext()).createNotification(0,"BOOT TESTER",string, R.mipmap.photo,null);
                     mHandlerMarks.postDelayed(mStatusCheckerMarks, mInterval);
                 }
             }
