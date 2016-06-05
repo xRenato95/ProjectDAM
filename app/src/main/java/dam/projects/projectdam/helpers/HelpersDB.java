@@ -1,5 +1,7 @@
 package dam.projects.projectdam.helpers;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,6 +163,16 @@ public class HelpersDB {
                     AcademicYear.toObject(request.getParametersDetails()[3]), Integer.parseInt(request.getParametersDetails()[4])));
         }
         return list.toArray(new ScheduleDay[list.size()]);
+    }
+
+    public static Grade[] getGradesWithNotes(Grade[] grades){
+        ArrayList<Grade> gradesWithNotes = new ArrayList<>();
+        for(Grade cada : grades){
+            if(!cada.getGrade().equals("")){
+                gradesWithNotes.add(cada);
+            }
+        }
+        return gradesWithNotes.toArray(new Grade[gradesWithNotes.size()]);
     }
 
 }

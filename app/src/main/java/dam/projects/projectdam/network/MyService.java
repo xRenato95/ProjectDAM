@@ -47,7 +47,6 @@ public class MyService extends Service {
                     if(mInterval >= 1800*1000){
                         mInterval = 1800 * 1000;
                     }
-                    Log.i("TEMPO",mInterval/60+"");
                     mHandlerMarks.postDelayed(mStatusCheckerMarks, mInterval);
                 }
             }

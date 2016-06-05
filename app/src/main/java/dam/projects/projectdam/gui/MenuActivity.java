@@ -22,6 +22,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
@@ -123,6 +124,8 @@ public class MenuActivity extends AppCompatActivity
         if (!isMyServiceRunning()){
             Intent serviceIntent = new Intent(getApplicationContext(),MyService.class);
             getApplicationContext().startService(serviceIntent);
+        }
+        else{
         }
     }
 

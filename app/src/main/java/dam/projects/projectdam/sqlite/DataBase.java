@@ -367,15 +367,6 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
             cursor.close();
         }
         return list.toArray(new Grade[list.size()]);
-
-        //TODO TESTE NOTAS NICE
-        /*ArrayList<Grade> list = new ArrayList<>();
-
-        list.add(new Grade(new DateTime(2016,06,01,21,10,00),"Algebra","Algebra","Época normal",
-                "Prova Escrita – Exame Final","Teste 2","10,1",null,"horário e local para consulta de prova: ",
-                "15,4","15,4",null,1,1,45,0,0,semester,academicYear));
-
-        return list.toArray(new Grade[list.size()]);*/
     }
 
     public Grade[] getNewGrades(Grade[] remoteGrades) {
@@ -398,31 +389,9 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
             semester = 2;
         }
         Grade[] storedGrades = getGradesNotification();
-        //TODO TESTE NOTAS NICE
-        /*Grade[] temp = new Grade[storedGrades.length+1];
-        int j = 0;
-        for(int i = 0; i<storedGrades.length; i++){
-            temp[i]=storedGrades[i];
-            j++;
-        }
-        temp[j]= new Grade(new DateTime(),"Algebra","Algebra","Época normal",
-                "Prova Escrita – Exame Final","Teste 2","10,1",null,"horário e local para consulta de prova: ",
-                "15,4","15,4",null,1,1,45,0,0,semester,academicYear);
 
-                if (remoteGrades.length != temp.length) {
-            // search for differences
-            for (Grade each : temp) {
-                boolean exist = false;
-                for(int i=0;i<remoteGrades.length;i++){
-                    if(remoteGrades[i].toString().equals(each.toString())){
-                        exist = true;
-                    }
-                }
-                if(!exist){
-                    newGrades.add(each);
-                }
-            }
-        }*/
+        //return remoteGrades;
+
         if (remoteGrades.length != storedGrades.length) {
             // search for differences
             for (Grade each : storedGrades) {
@@ -437,8 +406,6 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
                 }
             }
         }
-        deleteGradesNotification();
-        insertGradesNotification(remoteGrades);
         return newGrades.toArray(new Grade[newGrades.size()]);
     }
 

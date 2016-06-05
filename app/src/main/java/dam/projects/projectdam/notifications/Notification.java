@@ -56,7 +56,7 @@ public class Notification {
                 mBuilder.setContentText(message.length+" " + notificationNewInvite);
             }
             resultIntent = new Intent(context, activityLoad);
-            resultIntent.putExtra("menuFragment","marks");
+            resultIntent.putExtra("menuFragment","friends");
         }
         else if(message[0] instanceof Grade) {
             if(message.length>1){
@@ -68,7 +68,7 @@ public class Notification {
                 mBuilder.setContentText(message.length+" " + notificationNewMark);
             }
             resultIntent = new Intent(context, activityLoad);
-            resultIntent.putExtra("menuFragment","grades");
+            resultIntent.putExtra("menuFragment","marks");
         }
         mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(aux));
         PendingIntent resultPendingIntent =

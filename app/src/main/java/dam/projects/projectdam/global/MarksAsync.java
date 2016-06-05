@@ -45,6 +45,7 @@ public class MarksAsync extends AsyncTask<HttpNRequest, Void, Code> {
     private Notification noti;
     private DataBase db;
     private Context context;
+    private Grade[] allGrades;
 
     public MarksAsync(DataBase db,Context context){
         noti = new Notification(context);
@@ -95,7 +96,7 @@ public class MarksAsync extends AsyncTask<HttpNRequest, Void, Code> {
         // region POST NETWORK ACTIONS
         switch (code) {
             case GET_GRADE_SUC:
-
+                db.insertGradesNotification(allGrades);
                 break;
             case GET_GRADE_NULL:
                 break;
@@ -113,10 +114,14 @@ public class MarksAsync extends AsyncTask<HttpNRequest, Void, Code> {
                     if (!Helpers.jsonToObject(jsonContent, JResultUPT.class).isValid()) return Code.GET_GRADE_NULL;
                     return Code.GET_GRADE_ERR;
                 }
-                Grade[] newGrades = HelpersDB.convertGrades(jresult, request);
-                if(newGrades.length>0) {
+                allGrades = HelpersDB.getGradesWithNotes(HelpersDB.convertGrades(jresult, request));
+                Grade[] newGrades = db.getNewGrades(allGrades);
+                if(db.getGradesNotification().length >=0 && newGrades.length>0) {
                     String notificationUptMarks = context.getString(R.string.notification_upt_marks);
                     noti.createNotification(Code.GRADES_NOTIFICATION.code, notificationUptMarks, newGrades, R.mipmap.photo, MenuActivity.class);
+                    return Code.GET_GRADE_SUC;
+                }
+                else{
                     return Code.GET_GRADE_SUC;
                 }
             default:
