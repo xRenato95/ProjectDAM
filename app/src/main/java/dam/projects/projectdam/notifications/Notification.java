@@ -28,6 +28,8 @@ public class Notification {
 
     public void createNotification(int id, String title, Object[] message, int icon, Class activityLoad){
 
+        Intent resultIntent = null;
+
         mBuilder        .setSmallIcon(icon)
                         .setContentTitle(title)
                         .setAutoCancel(true);
@@ -53,7 +55,7 @@ public class Notification {
                 String notificationNewInvite = context.getString(R.string.notification_new_invite);
                 mBuilder.setContentText(message.length+" " + notificationNewInvite);
             }
-            Intent resultIntent = new Intent(context, activityLoad);
+            resultIntent = new Intent(context, activityLoad);
             resultIntent.putExtra("menuFragment","marks");
         }
         else if(message[0] instanceof Grade) {
@@ -65,16 +67,12 @@ public class Notification {
                 String notificationNewMark = context.getString(R.string.notification_new_mark);
                 mBuilder.setContentText(message.length+" " + notificationNewMark);
             }
-            Intent resultIntent = new Intent(context, activityLoad);
+            resultIntent = new Intent(context, activityLoad);
             resultIntent.putExtra("menuFragment","grades");
         }
-
-                        mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(aux));
-
-        Intent resultIntent = new Intent(context, activityLoad);
-        resultIntent.putExtra("menuFragment","marks");
+        mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(aux));
         PendingIntent resultPendingIntent =
-                PendingIntent.getActivity(context,id,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+               PendingIntent.getActivity(context,id,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager mNotifyMgr =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

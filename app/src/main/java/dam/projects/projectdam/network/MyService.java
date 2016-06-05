@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import dam.projects.projectdam.R;
 import dam.projects.projectdam.global.MarksAsync;
 import dam.projects.projectdam.global.UpdateAsync;
+import dam.projects.projectdam.gui.MenuActivity;
 import dam.projects.projectdam.notifications.Notification;
 import dam.projects.projectdam.objects.AcademicYear;
 import dam.projects.projectdam.objects.Grade;
@@ -47,9 +48,6 @@ public class MyService extends Service {
                         mInterval = 1800 * 1000;
                     }
                     Log.i("TEMPO",mInterval/60+"");
-                    String[] string = new String[1];
-                    string[0] = "IT WORKS!";
-                    new Notification(getApplicationContext()).createNotification(0,"BOOT TESTER",string, R.mipmap.photo,null);
                     mHandlerMarks.postDelayed(mStatusCheckerMarks, mInterval);
                 }
             }
