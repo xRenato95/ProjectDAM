@@ -50,9 +50,9 @@ public class HelpersDB {
                     each.est_assiduidade,
                     each.dfm_nota_minima,
                     each.dfm_peso,
-                    (request.getParametersDetails()[5].equals("null") ? null : Integer.parseInt(request.getParametersDetails()[5])),
-                    (request.getParametersDetails()[6].equals("null") ? null : Integer.parseInt(request.getParametersDetails()[6])),
-                    (request.getParametersDetails()[4].equals("null") ? null : Integer.parseInt(request.getParametersDetails()[4])),
+                    (request.getParametersDetails()[5]!=null&&!request.getParametersDetails()[5].equals("null") ? Integer.parseInt(request.getParametersDetails()[5]):null),
+                    (request.getParametersDetails()[6]!=null&&!request.getParametersDetails()[6].equals("null") ? Integer.parseInt(request.getParametersDetails()[6]):null),
+                    (request.getParametersDetails()[4]!=null&&!request.getParametersDetails()[4].equals("null") ? Integer.parseInt(request.getParametersDetails()[4]):null),
                     AcademicYear.toObject(request.getParametersDetails()[3])));
         }
         return list.toArray(new Grade[list.size()]);

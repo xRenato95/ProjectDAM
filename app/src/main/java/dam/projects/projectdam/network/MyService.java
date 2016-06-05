@@ -25,7 +25,7 @@ import dam.projects.projectdam.sqlite.DataBase;
  */
 public class MyService extends Service {
 
-    private int mInterval = 5 * 1000; // Começa com 1 minutos
+    private int mInterval = 60 * 1000; // Começa com 1 minutos
     private Handler mHandlerMarks,mHandlerInvitations;
     private Runnable mStatusCheckerMarks= null,mStatusCheckerInvitations = null;
     DataBase db;
