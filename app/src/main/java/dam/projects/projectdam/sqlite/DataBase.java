@@ -394,10 +394,10 @@ public class DataBase extends android.database.sqlite.SQLiteOpenHelper {
 
         if (remoteGrades.length != storedGrades.length) {
             // search for differences
-            for (Grade each : storedGrades) {
+            for (Grade each : remoteGrades) {
                 boolean exist = false;
-                for(int i=0;i<remoteGrades.length;i++){
-                    if(remoteGrades[i].toString().equals(each.toString())){
+                for(int i=0;i<storedGrades.length;i++){
+                    if(storedGrades[i].toString().equals(each.toString())){
                         exist = true;
                     }
                 }

@@ -125,8 +125,6 @@ public class MenuActivity extends AppCompatActivity
             Intent serviceIntent = new Intent(getApplicationContext(),MyService.class);
             getApplicationContext().startService(serviceIntent);
         }
-        else{
-        }
     }
 
     @Override
